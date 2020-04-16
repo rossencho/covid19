@@ -10,7 +10,7 @@ const MongoClient = require("mongodb").MongoClient;
 const client = new MongoClient(dbConfig.url, { useUnifiedTopology: true });
 
 function cronWrapper() {
-  cron.schedule("59 23 * * *", async function () {
+  cron.schedule("59 2 * * *", async function () {
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate() - 1;
