@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  api:
+    build:
+      context: ./api
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    links:
+      - database
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "8000:80"
+    links:
+      - api
+
+  database:
+    image: mongo
+    volumes:
+      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
+    ports:
+      - "27017-27019:27017-27019"
