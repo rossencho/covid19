@@ -19,7 +19,7 @@ const summary = async (req, res) => {
               total_deaths: result.total_deaths,
               total_recovered: result.total_recovered,
               last_date_updated: result.last_date_updated,
-              country_statistics: statsByCountry,
+              country_statistics: result.country_statistics,
             });
           });
         });
